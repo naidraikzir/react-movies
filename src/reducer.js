@@ -1,6 +1,6 @@
 const initialState = {
   search: '',
-  page: 1,
+  page: 0,
   movies: [],
   error: '',
 };
@@ -12,16 +12,19 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         page: payload,
       };
+
     case 'SET_SEARCH':
       return {
         ...state,
         search: payload,
       };
+
     case 'RESET_SEARCH':
       return {
         ...state,
         search: initialState.search,
       };
+
     case 'ADD_MOVIES':
       return {
         ...state,
@@ -30,21 +33,25 @@ const reducer = (state = initialState, { type, payload }) => {
           ...payload,
         ],
       };
+
     case 'RESET_MOVIES':
       return {
         ...state,
         movies: initialState.movies,
       };
+
     case 'SET_ERROR':
       return {
         ...state,
         error: payload,
       };
+
     case 'RESET_ERROR':
       return {
         ...state,
         error: initialState.error,
       };
+
     default:
       return state;
   }

@@ -6,12 +6,11 @@ import App from '.';
 test('renders learn react link', () => {
   render(<App />, {
     initialState: {
-      search: '',
       movies: [{
         Title: 'Title',
       }],
     },
   });
-  const linkElement = screen.getByText(/Next/i);
-  expect(linkElement).toBeInTheDocument();
+  const titleElement = screen.getByText(/Title/i);
+  expect(titleElement).toBeInTheDocument();
 });
