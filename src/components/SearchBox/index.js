@@ -9,12 +9,13 @@ import { CloseIcon } from '@chakra-ui/icons';
 
 const Search = ({
   value,
-  onInput
+  onInput,
+  onReset,
 }) => (
   <InputGroup>
     <Input
       value={value}
-      onInput={({ target }) => onInput(target.value)}
+      onInput={onInput}
       shadow="lg"
       placeholder="Type to search movies..."
     />
@@ -22,7 +23,7 @@ const Search = ({
       <Button
         borderRadius="full"
         size="xs"
-        onClick={() => onInput('')}
+        onClick={onReset}
       >
         <CloseIcon color="gray.400" />
       </Button>
