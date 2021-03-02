@@ -1,40 +1,106 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   ChakraProvider,
+  Container,
+  SimpleGrid,
   Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
   theme,
+  Button,
+  Heading,
+  Flex,
 } from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
+import { WarningTwoIcon } from '@chakra-ui/icons';
+import request from './request';
+import MovieCard from 'components/MovieCard';
+import Navbar from 'components/Navbar';
+import SearchBox from 'components/SearchBox';
 
 function App() {
+  const [error, setError] = useState('');
+  const [page, setPage] = useState(1);
+  const [search, setSearch] = useState('');
+  const [movies, setMovies] = useState([]);
+
+  const fetch = useCallback(async () => {
+    const { data } = await request.get('/', {
+      params: {
+        s: search,
+        page,
+        type: 'movie'
+      }
+    });
+    if (data.Error) {
+      setError(data.Error);
+      setMovies([]);
+    } else {
+      setError('');
+      setMovies(data.Search);
+    }
+  }, [search, page]);
+
+  useEffect(() => {
+    if (search.length) fetch();
+    else if (!search.length) {
+      setMovies([]);
+      setError('');
+    }
+  }, [search, fetch]);
+
   return (
     <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack spacing={8}>
-            <Logo h="40vmin" pointerEvents="none" />
-            <Text>
-              Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
-            </Text>
-            <Link
-              color="teal.500"
-              href="https://chakra-ui.com"
-              fontSize="2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn Chakra
-            </Link>
-          </VStack>
-        </Grid>
-      </Box>
+      <Navbar />
+      <Container
+        maxW="container.xl"
+        pb="10"
+      >
+        <Container
+          maxW="container.md"
+          mt="5"
+          mb="10"
+        >
+          <SearchBox
+            value={search}
+            onInput={setSearch}
+          />
+        </Container>
+
+        {error && <Box
+          color="gray.300"
+          my="20"
+          textAlign="center"
+        >
+          <WarningTwoIcon
+            w="20"
+            h="20"
+          />
+          <Heading
+            size="lg"
+            mt="4"
+          >
+            {error}
+          </Heading>
+        </Box>}
+
+        <SimpleGrid
+          columns={[1, 2, 2, 4, 5]}
+          alignItems="center"
+          spacing="14"
+          mb="20"
+          p="3"
+        >
+          {movies.map((movie, m) => <MovieCard key={m} {...movie} />)}
+        </SimpleGrid>
+
+        {!!movies.length && <Flex justifyContent="center">
+          <Button
+            colorScheme="purple"
+            w="40"
+            onClick={() => setPage(page + 1)}
+          >
+            Next
+          </Button>
+        </Flex>}
+      </Container>
     </ChakraProvider>
   );
 }
