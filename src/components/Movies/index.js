@@ -4,6 +4,7 @@ import MovieCard from 'components/MovieCard';
 
 const Movies = ({
   movies,
+  onItemPosterClick,
 }) => (
   <SimpleGrid
     columns={[1, 2, 2, 4, 5]}
@@ -16,6 +17,7 @@ const Movies = ({
       <MovieCard
         key={m}
         {...movie}
+        onPosterClick={onItemPosterClick}
       />
     ))}
   </SimpleGrid>

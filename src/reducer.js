@@ -2,6 +2,7 @@ const initialState = {
   search: '',
   page: 0,
   movies: [],
+  preview: null,
   error: '',
 };
 
@@ -38,6 +39,18 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         movies: initialState.movies,
+      };
+
+    case 'SET_PREVIEW':
+      return {
+        ...state,
+        preview: payload,
+      };
+
+    case 'RESET_PREVIEW':
+      return {
+        ...state,
+        preview: initialState.preview,
       };
 
     case 'SET_ERROR':

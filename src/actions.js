@@ -31,6 +31,15 @@ export const resetMovies = () => ({
   type: 'RESET_MOVIES',
 });
 
+export const setPreview = payload => ({
+  type: 'SET_PREVIEW',
+  payload,
+});
+
+export const resetPreview = payload => ({
+  type: 'RESET_PREVIEW',
+});
+
 export const setError = payload => ({
   type: 'SET_ERROR',
   payload,

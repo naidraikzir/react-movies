@@ -8,18 +8,26 @@ import {
 import Navbar from 'components/Navbar';
 import SearchBox from 'components/SearchBox';
 import Movies from 'components/Movies';
+import LightBox from 'components/LightBox';
 import Error from 'components/Error';
 import {
   setSearch,
   resetSearch,
+  setPreview,
+  resetPreview,
 } from 'actions';
 import { fetchMovies } from 'api';
 
 function App() {
+  const dispatch = useDispatch();
   const [loader, setLoader] = useState(null);
   const observer = useRef(null);
-  const { search = '', movies, error } = useSelector(state => state);
-  const dispatch = useDispatch();
+  const {
+    search = '',
+    movies,
+    preview,
+    error,
+  } = useSelector(state => state);
 
   useEffect(() => {
     if (observer.current) observer.current.disconnect();
@@ -60,10 +68,19 @@ function App() {
         </Container>
 
         {error && <Error error={error} />}
-        <Movies movies={movies} />
+        <Movies
+          movies={movies}
+          onItemPosterClick={poster => dispatch(setPreview(poster))}
+        />
 
         {!!movies.length && <div ref={setLoader} />}
       </Container>
+
+      {preview && <LightBox
+        image={preview}
+        isOpen={preview}
+        onClose={() => dispatch(resetPreview())}
+      />}
     </ChakraProvider>
   );
 }
