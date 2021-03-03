@@ -9,21 +9,24 @@ import {
 const MovieCard = ({
   Poster,
   onPosterClick,
-  Title
+  Title,
+  onTitleClick,
 }) => {
   const titleBg = useColorModeValue('white', 'gray.800');
   return (
-    <Box pos="relative">
+    <Box
+      pos="relative"
+      cursor="pointer"
+    >
       <Image
         src={Poster}
-        cursor="pointer"
         width="100%"
         height="300px"
         fit="cover"
         rounded="xl"
         onClick={(evt) => {
           evt.stopPropagation();
-          onPosterClick(Poster);
+          onPosterClick();
         }}
       />
       <Heading
@@ -36,6 +39,7 @@ const MovieCard = ({
         right="1em"
         rounded="md"
         shadow="lg"
+        onClick={onTitleClick}
       >
         {Title}
       </Heading>

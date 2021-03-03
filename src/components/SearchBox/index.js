@@ -27,7 +27,7 @@ const Search = ({
         size="xs"
         onClick={onReset}
       >
-        <CloseIcon color="gray.400" />
+        <CloseIcon color="gray.500" />
       </Button>
     </InputRightElement>}
   </InputGroup>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   Flex,
   Heading,
@@ -6,12 +7,24 @@ import {
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from 'components/ColorModeSwitcher';
 
-const Navbar = () => (
-  <Flex p="4">
-    <Heading ml="1">Movies</Heading>
-    <Spacer />
-    <ColorModeSwitcher justifySelf="flex-end" />
-  </Flex>
-);
+const Navbar = ({
+  onTitleClick,
+}) => {
+  const history = useHistory();
+
+  return (
+    <Flex p="4">
+      <Heading
+        cursor="pointer"
+        ml="1"
+        onClick={() => history.push('/')}
+      >
+        Movies
+      </Heading>
+      <Spacer />
+      <ColorModeSwitcher justifySelf="flex-end" />
+    </Flex>
+  );
+};
 
 export default Navbar;

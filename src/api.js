@@ -5,7 +5,7 @@ import {
   resetMovies,
   setPage,
   setError,
-  resetError
+  resetError,
 } from 'store/actions';
 
 export const fetchMovies = async () => {
@@ -29,5 +29,18 @@ export const fetchMovies = async () => {
     }
   } catch ({ response }) {
     store.dispatch(setError(response.data.Error));
+  }
+};
+
+export const fetchMovie = async (id) => {
+  try {
+    const { data } = await get('/', {
+      params: {
+        i: id,
+      },
+    })
+    return data;
+  } catch ({ response }) {
+    return Promise.reject(response.data.Error);
   }
 };

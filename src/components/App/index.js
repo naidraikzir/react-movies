@@ -5,10 +5,10 @@ import {
   Route,
 } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  ChakraProvider,
-  theme,
-} from '@chakra-ui/react';
+import { ChakraProvider } from '@chakra-ui/react';
+
+import theme from 'theme';
+import Fonts from 'components/Fonts';
 import Navbar from 'components/Navbar';
 import LightBox from 'components/LightBox';
 import Home from 'pages/Home';
@@ -21,9 +21,11 @@ function App() {
 
   return (
     <ChakraProvider theme={theme}>
-      <Navbar />
+      <Fonts />
 
       <Router>
+        <Navbar />
+
         <Switch>
           <Route path="/:id">
             <Movie />
