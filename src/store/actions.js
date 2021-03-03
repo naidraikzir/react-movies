@@ -5,6 +5,11 @@ export const setPage = payload => ({
   payload,
 });
 
+export const resetPage = payload => ({
+  type: 'RESET_PAGE',
+  payload,
+});
+
 export const setSearch = payload => {
   store.dispatch(resetMovies());
   store.dispatch(resetError());
@@ -27,9 +32,12 @@ export const setMovies = payload => ({
   payload,
 });
 
-export const resetMovies = () => ({
-  type: 'RESET_MOVIES',
-});
+export const resetMovies = () => {
+  store.dispatch(resetPage());
+  return ({
+    type: 'RESET_MOVIES',
+  });
+};
 
 export const setPreview = payload => ({
   type: 'SET_PREVIEW',

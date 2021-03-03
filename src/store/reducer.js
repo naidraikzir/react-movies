@@ -14,6 +14,12 @@ const reducer = (state = initialState, { type, payload }) => {
         page: payload,
       };
 
+    case 'RESET_PAGE':
+      return {
+        ...state,
+        page: initialState.page,
+      };
+
     case 'SET_SEARCH':
       return {
         ...state,
