@@ -22,13 +22,12 @@ const MovieDescription = ({
   return (
     <Box
       bg={detailBg}
-      p={{ sm: 8 }}
-      py={{ base: 4, sm: 8 }}
+      p={{ base: 4, sm: 8 }}
       rounded={{ md: '2xl' }}
       shadow={{ md: 'xl' }}
       pos="relative"
       left={{ md: '-5em' }}
-      top={{ base: '-20em', md: '5em' }}
+      top={{ base: '-5em', md: '5em' }}
       sx={{ backdropFilter: 'blur(20px)' }}
     >
       <Text
