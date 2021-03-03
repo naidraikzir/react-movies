@@ -6,7 +6,7 @@ import {
   setPage,
   setError,
   resetError
-} from 'actions';
+} from 'store/actions';
 
 export const fetchMovies = async () => {
   const { page, search } = store.getState(state => state);

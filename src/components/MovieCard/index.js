@@ -11,7 +11,7 @@ const MovieCard = ({
   onPosterClick,
   Title
 }) => {
-  const titleBg = useColorModeValue('gray.100', 'gray.800');
+  const titleBg = useColorModeValue('white', 'gray.800');
   return (
     <Box pos="relative">
       <Image

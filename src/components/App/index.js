@@ -15,7 +15,7 @@ import {
   resetSearch,
   setPreview,
   resetPreview,
-} from 'actions';
+} from 'store/actions';
 import { fetchMovies } from 'api';
 
 function App() {

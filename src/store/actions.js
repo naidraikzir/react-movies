@@ -1,4 +1,4 @@
-import store from 'store';
+import store from '.';
 
 export const setPage = payload => ({
   type: 'SET_PAGE',
