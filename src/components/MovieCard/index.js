@@ -20,6 +20,7 @@ const MovieCard = ({
     >
       <Image
         src={Poster}
+        alt={Title}
         width="100%"
         height="300px"
         fit="cover"

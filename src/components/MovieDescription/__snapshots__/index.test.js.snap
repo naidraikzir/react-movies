@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`match snapshot 1`] = `
+<div
+  class="css-1urwz0x"
+>
+  <p
+    class="chakra-text css-1ewjzqi"
+  >
+    Title
+     
+    <span
+      class="css-65vpd2"
+    >
+      2021
+    </span>
+  </p>
+  <div
+    class="css-fd0k57"
+  >
+    <span
+      class="css-1al1bi6"
+    >
+      ⭐️ 
+      10
+       / 
+      <sub
+        class="css-0"
+      >
+        10
+      </sub>
+    </span>
+    <span
+      class="css-m800dj"
+    >
+      <span
+        class="css-1h8gyx6"
+      >
+        Genre
+      </span>
+    </span>
+  </div>
+  <p
+    class="chakra-text css-1w2p18d"
+  >
+    Lorem ipsum
+  </p>
+  <div
+    class="css-1adflju"
+  >
+    <p
+      class="chakra-text css-0"
+    >
+      Stars: 
+      John Wick
+    </p>
+  </div>
+</div>
+`;

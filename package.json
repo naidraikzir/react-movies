@@ -6,6 +6,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:update": "react-scripts test --watchAll=false --coverage -u",
     "eject": "react-scripts eject"
   },
   "dependencies": {
@@ -20,14 +21,14 @@
     "react-icons": "^3.11.0",
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
     "redux": "^4.0.5",
     "web-vitals": "^0.2.4"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^10.4.9",
-    "@testing-library/user-event": "^12.8.0"
+    "@testing-library/user-event": "^12.8.0",
+    "react-scripts": "4.0.3"
   },
   "eslintConfig": {
     "extends": "react-app"

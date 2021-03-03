@@ -9,16 +9,19 @@ import {
 const LightBox = ({
   image,
   isOpen,
-  onOpen,
   onClose,
 }) => (
   <Modal
+    id="light-box"
     isOpen={isOpen}
     onClose={onClose}
   >
     <ModalOverlay />
     <ModalContent>
-      <Img src={image} />
+      <Img
+        src={image}
+        alt="Poster"
+      />
     </ModalContent>
   </Modal>
 );

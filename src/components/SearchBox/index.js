@@ -8,13 +8,14 @@ import {
 import { CloseIcon } from '@chakra-ui/icons';
 
 const Search = ({
-  value,
+  value = '',
   onInput,
   onEnter,
   onReset,
 }) => (
   <InputGroup>
     <Input
+      name="search"
       value={value}
       onInput={onInput}
       onKeyUp={evt => evt.key === 'Enter' && onEnter(evt)}

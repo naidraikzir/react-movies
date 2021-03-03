@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`match snapshot 1`] = `
+<div
+  class="css-dfpqc0"
+>
+  <img
+    alt="Title"
+    class="chakra-image__placeholder css-md0tyy"
+  />
+  <h2
+    class="chakra-heading css-ic2ri5"
+  >
+    Title
+  </h2>
+</div>
+`;
