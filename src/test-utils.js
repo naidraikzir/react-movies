@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { ChakraProvider, theme } from '@chakra-ui/react';
-import reducer from 'reducer';
+import reducer from 'store/reducer';
 
 const customRender = (
   ui,
