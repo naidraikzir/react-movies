@@ -10,14 +10,16 @@ import { CloseIcon } from '@chakra-ui/icons';
 const Search = ({
   value,
   onInput,
+  onEnter,
   onReset,
 }) => (
   <InputGroup>
     <Input
       value={value}
       onInput={onInput}
+      onKeyUp={evt => evt.key === 'Enter' && onEnter(evt)}
       shadow="lg"
-      placeholder="Type to search movies..."
+      placeholder="Type and press enter to search movies..."
     />
     {value.length && <InputRightElement p="5">
       <Button

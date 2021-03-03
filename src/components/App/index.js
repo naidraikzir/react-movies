@@ -20,19 +20,24 @@ function App() {
   const observer = useRef(null);
   const { search = '', movies, error } = useSelector(state => state);
   const dispatch = useDispatch();
-  const canSearch = search.length > 2;
 
   useEffect(() => {
     if (observer.current) observer.current.disconnect();
     observer.current = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting && canSearch && !error.length) {
+      if (entry.isIntersecting && movies.length && !error.length) {
         fetchMovies();
       }
     });
     const { current: currentObserver } = observer;
     if (loader) currentObserver.observe(loader);
     return () => currentObserver.disconnect();
-  }, [canSearch, error, loader]);
+  }, [movies, error, loader]);
+
+  const onSearchEnter = ({ target }) => {
+    if (target.value.length) {
+      fetchMovies();
+    }
+  };
 
   return (
     <ChakraProvider theme={theme}>
@@ -49,6 +54,7 @@ function App() {
           <SearchBox
             value={search}
             onInput={({ target }) => dispatch(setSearch(target.value))}
+            onEnter={onSearchEnter}
             onReset={() => dispatch(resetSearch())}
           />
         </Container>
@@ -56,7 +62,7 @@ function App() {
         {error && <Error error={error} />}
         <Movies movies={movies} />
 
-        <div ref={setLoader} />
+        {!!movies.length && <div ref={setLoader} />}
       </Container>
     </ChakraProvider>
   );
