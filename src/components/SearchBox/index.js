@@ -17,7 +17,7 @@ const Search = ({
     <Input
       name="search"
       value={value}
-      onInput={onInput}
+      onChange={onInput}
       onKeyUp={evt => evt.key === 'Enter' && onEnter(evt)}
       shadow="lg"
       placeholder="Type and press enter to search movies..."

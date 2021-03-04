@@ -31,7 +31,7 @@ const Home = () => {
   const [loader, setLoader] = useState(null);
   const {
     search = '',
-    movies,
+    movies = [],
     page,
     error,
   } = useSelector(state => state);

@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`match snapshot 1`] = `
+<div
+  class="chakra-container css-1modgg1"
+>
+  
+  <div
+    class="chakra-fade"
+    style="opacity: 0;"
+  >
+    <div
+      class="css-wklw9v"
+    >
+      <div
+        class="css-iqgyig"
+      >
+        <img
+          class="chakra-image css-1ypn42y"
+        />
+      </div>
+      <div
+        class="css-iqgyig"
+      >
+        <div
+          class="css-1urwz0x"
+        >
+          <p
+            class="chakra-text css-1ewjzqi"
+          >
+             
+            <span
+              class="css-65vpd2"
+            />
+          </p>
+          <div
+            class="css-fd0k57"
+          >
+            <span
+              class="css-1al1bi6"
+            >
+              ⭐️ 
+               / 
+              <sub
+                class="css-0"
+              >
+                10
+              </sub>
+            </span>
+            <span
+              class="css-m800dj"
+            >
+              <span
+                class="css-1h8gyx6"
+              />
+            </span>
+          </div>
+          <p
+            class="chakra-text css-1w2p18d"
+          />
+          <div
+            class="css-1adflju"
+          >
+            <p
+              class="chakra-text css-0"
+            >
+              Stars: 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
