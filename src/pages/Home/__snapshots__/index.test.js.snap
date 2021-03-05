@@ -22,5 +22,6 @@ exports[`match snapshot 1`] = `
   <div
     class="css-1olcktu"
   />
+  <div />
 </div>
 `;

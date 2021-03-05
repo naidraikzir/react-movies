@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Container } from '@chakra-ui/react';
@@ -15,6 +15,7 @@ import {
   setError,
   resetError,
 } from 'store/actions';
+import useIntersectionObserver from 'hooks/useIntersectionObserver';
 import SearchBox from 'components/SearchBox';
 import Movies from 'components/Movies';
 import Error from 'components/Error';
@@ -25,10 +26,9 @@ const PER_PAGE = 10;
 const Home = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const observer = useRef(null);
+  const rootRef = useRef(null);
+  const loaderRef = useRef(null);
   const [totalResults, setTotalResults] = useState(0);
-  const [fetched, setFetched] = useState(false);
-  const [loader, setLoader] = useState(null);
   const {
     search = '',
     movies = [],
@@ -51,31 +51,31 @@ const Home = () => {
     } catch (error) {
       dispatch(setError(error));
       dispatch(resetMovies());
-    } finally {
-      setFetched(true);
     }
   }, [dispatch, page, search]);
-
-  useEffect(() => {
-    if (observer.current) observer.current.disconnect();
-    observer.current = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting && movies.length && !error.length) {
-        fetch();
-      }
-    });
-    const { current: currentObserver } = observer;
-    if (loader) currentObserver.observe(loader);
-    return () => currentObserver.disconnect();
-  }, [movies, error, loader, fetch]);
 
   const onSearchEnter = ({ target }) => {
     if (target.value.length) fetch();
   };
 
+  useIntersectionObserver({
+    target: loaderRef,
+    onIntersect: ([entry]) => {
+      if (
+        entry.isIntersecting
+        && movies.length
+        && movies.length + PER_PAGE <= totalResults
+      ) {
+        fetch();
+      }
+    },
+  });
+
   return (
     <Container
       maxW="container.xl"
       pb="10"
+      ref={rootRef}
     >
       <Container
         maxW="container.md"
@@ -103,7 +103,7 @@ const Home = () => {
         ))}
       </Movies>
 
-      {fetched && movies.length + PER_PAGE < totalResults && <div ref={setLoader} />}
+      <div ref={loaderRef} />
     </Container>
   );
 };
