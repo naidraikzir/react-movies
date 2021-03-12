@@ -26,7 +26,6 @@ const PER_PAGE = 10;
 const Home = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const rootRef = useRef(null);
   const loaderRef = useRef(null);
   const [totalResults, setTotalResults] = useState(0);
   const {
@@ -75,7 +74,6 @@ const Home = () => {
     <Container
       maxW="container.xl"
       pb="10"
-      ref={rootRef}
     >
       <Container
         maxW="container.md"
