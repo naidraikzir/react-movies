@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   useColorModeValue,
   Box,
   Heading,
   Image
 } from '@chakra-ui/react';
+import none from 'assets/none.png'
 
 const MovieCard = ({
   Poster,
@@ -12,14 +13,16 @@ const MovieCard = ({
   Title,
   onTitleClick,
 }) => {
+  const [imageIsError, setImageIsError] = useState(false)
   const titleBg = useColorModeValue('white', 'gray.800');
+
   return (
     <Box
       pos="relative"
       cursor="pointer"
     >
       <Image
-        src={Poster}
+        src={!imageIsError ? Poster : none}
         alt={Title}
         width="100%"
         height="300px"
@@ -27,8 +30,9 @@ const MovieCard = ({
         rounded="xl"
         onClick={(evt) => {
           evt.stopPropagation();
-          onPosterClick();
+          !imageIsError && onPosterClick();
         }}
+        onError={() => setImageIsError(true)}
       />
       <Heading
         bg={titleBg}

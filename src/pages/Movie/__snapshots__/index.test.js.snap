@@ -7,6 +7,49 @@ exports[`match snapshot 1`] = `
   
   <div
     class="chakra-fade"
+    style="opacity: 0.013007786973507272;"
+  >
+    <div
+      class="css-wklw9v"
+    >
+      <div
+        class="css-iqgyig"
+      >
+        <div
+          class="chakra-skeleton css-2qlcjj"
+        />
+      </div>
+      <div
+        class="css-iqgyig"
+      >
+        <div
+          class="css-1urwz0x"
+        >
+          <div
+            class="chakra-stack css-4xr7e6"
+          >
+            <div
+              class="chakra-skeleton css-6qt4ps"
+            />
+            <div
+              class="chakra-skeleton css-6qt4ps"
+            />
+            <div
+              class="chakra-skeleton css-6qt4ps"
+            />
+            <div
+              class="chakra-skeleton css-6qt4ps"
+            />
+            <div
+              class="chakra-skeleton css-6qt4ps"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="chakra-fade"
     style="opacity: 0;"
   >
     <div

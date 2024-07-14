@@ -11,7 +11,6 @@ export const resetPage = payload => ({
 });
 
 export const setSearch = payload => {
-  store.dispatch(resetMovies());
   store.dispatch(resetError());
   return {
     type: 'SET_SEARCH',

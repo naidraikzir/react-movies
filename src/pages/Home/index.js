@@ -1,6 +1,6 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { Container } from '@chakra-ui/react';
 import MovieCard from 'components/MovieCard';
 
@@ -25,6 +25,7 @@ const PER_PAGE = 10;
 
 const Home = () => {
   const history = useHistory();
+  const location = useLocation();
   const dispatch = useDispatch();
   const loaderRef = useRef(null);
   const [totalResults, setTotalResults] = useState(0);
@@ -54,8 +55,23 @@ const Home = () => {
   }, [dispatch, page, search]);
 
   const onSearchEnter = ({ target }) => {
-    if (target.value.length) fetch();
+    if (target.value.length) {
+      history.push({
+        pathname: location.pathname,
+        search: `?search=${target.value}`
+      })
+      fetch();
+    }
   };
+
+  useEffect(() => {
+    if (location.search) {
+      const params = new URLSearchParams(location.search);
+      dispatch(setSearch(params.get('search')));
+    } else {
+      dispatch(resetSearch());
+    }
+  }, [location.search, dispatch])
 
   useIntersectionObserver({
     target: loaderRef,
